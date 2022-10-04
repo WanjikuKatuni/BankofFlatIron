@@ -41,7 +41,7 @@ function handleNewTransaction(newTransaction){
   return (
     <div>
       <Search onSearch={handleSearch}/>
-      <AddTransactionForm onSubmit={handleNewTransaction}/>
+      <AddTransactionForm onFormSubmit={handleNewTransaction}/>
       <TransactionsList />
     </div>
   );

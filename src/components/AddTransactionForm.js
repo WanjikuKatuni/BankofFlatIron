@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import React, {useState} from "react";
 
-function AddTransactionForm({onSubmit}) {
+function AddTransactionForm({onFormSubmit}) {
 
   const [formData, setFormData] = useState({
     date: "",
@@ -10,10 +10,20 @@ function AddTransactionForm({onSubmit}) {
     amount: 0.01
   })
 
-  
+  function handleFormSubmit(e){
+    e.preventdefault();
+    onFormSubmit(formData);
+    setFormData({
+      date: "",
+      description:"",
+      category:"",
+      amount: 0.01
+    })
+  }
+
   return (
     <div className="ui segment">
-      <form className="ui form">
+      <form onSumbmit={handleFormSubmit} className="ui form">
         <div className="inline fields">
           <input type="date" name="date" />
           <input type="text" name="description" placeholder="Description" />
