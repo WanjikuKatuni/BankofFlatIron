@@ -21,9 +21,13 @@ function AddTransactionForm({onFormSubmit}) {
     })
   }
 
+  function handleChange(e){
+    setFormData({...formData, [e.target.name]:[e.target.value]})
+  }
+
   return (
     <div className="ui segment">
-      <form onSumbmit={handleFormSubmit} className="ui form">
+      <form onSumbmit={handleFormSubmit} onChange={handleChange} className="ui form">
         <div className="inline fields">
           <input type="date" name="date" />
           <input type="text" name="description" placeholder="Description" />
