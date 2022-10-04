@@ -13,10 +13,20 @@ function AccountContainer() {
     .then((response)=> response.json())
     .then(setTransactions)
   }
-  
+  useEffect(getTransactions,[])
+
+function handleSearch(Search){
+  if(search === ""){
+    getTransactions(transactions);
+  }
+  else
+  {
+    setTransactions((transactions)=>transactions.filter((transaction)=> transaction.description.includes(search)))
+  }
+}
   return (
     <div>
-      <Search />
+      <Search onSearch={handleSearch}/>
       <AddTransactionForm />
       <TransactionsList />
     </div>
