@@ -42,7 +42,7 @@ function handleNewTransaction(newTransaction){
     <div>
       <Search onSearch={handleSearch}/>
       <AddTransactionForm onFormSubmit={handleNewTransaction}/>
-      <TransactionsList />
+      <TransactionsList transactions={transactions}/>
     </div>
   );
 }
