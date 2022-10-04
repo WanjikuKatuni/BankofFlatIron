@@ -24,10 +24,24 @@ function handleSearch(search){
     setTransactions((transactions)=>transactions.filter((transaction)=> transaction.description.includes(search)))
   }
 }
+
+// adds new transcation after submitting form
+function handleNewTransaction(newTransaction){
+  setTransactions((transactions)=>[...transactions, newTransaction])
+
+  fetch("http://localhost:8001/transactions",{
+    method: "POST",
+    headers: {
+      "Content Type":"application/json",
+    },
+    body: JSON.stringify(newTransaction)
+  })
+}
+
   return (
     <div>
       <Search onSearch={handleSearch}/>
-      <AddTransactionForm />
+      <AddTransactionForm onSubmit={handleNewTransaction}/>
       <TransactionsList />
     </div>
   );
