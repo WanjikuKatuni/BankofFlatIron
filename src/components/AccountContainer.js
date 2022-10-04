@@ -15,7 +15,7 @@ function AccountContainer() {
   }
   useEffect(getTransactions,[])
 
-function handleSearch(Search){
+function handleSearch(search){
   if(search === ""){
     getTransactions(transactions);
   }
